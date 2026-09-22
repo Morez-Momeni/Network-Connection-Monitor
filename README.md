@@ -1,20 +1,10 @@
 <p align="center">
-  <img
-    src="https://capsule-render.vercel.app/api?type=waving&height=220&section=header&text=GIT%20LEARNING&fontSize=48&fontColor=ffffff&fontAlignY=38&desc=From%20Fundamentals%20to%20Internals&descAlignY=58&descSize=18&color=gradient&customColorList=12,20,30,2"
-    width="100%"
-  />
-
+  <img src="https://capsule-render.vercel.app/api?type=waving&color=0:0f2027,50:203a43,100:2c5364&height=180&section=header&text=Network%20Connection%20Monitor&fontSize=40&fontColor=ffffff&animation=fadeIn&fontAlignY=35" />
 </p>
+
 <p align="center">
-  <b>Network Connection Monitor</b>
+  A Python-based TCP connection monitoring project focused on connection tracking, logging, analysis, and basic security detection.
 </p>
-
-
-# Network Connection Monitor
-
-A Python-based TCP connection monitoring project focused on connection tracking, logging, basic traffic analysis, and security-oriented detection.
-
-This project is built as a practical learning project and is continuously developed alongside the author's progress in Python, networking, Linux, and cybersecurity.
 
 ---
 
@@ -22,35 +12,25 @@ This project is built as a practical learning project and is continuously develo
 
 **Active Development**
 
-This project is intentionally not considered a finished or production-ready application.
+This project is continuously evolving alongside the author's progress in Python, Linux, networking, and cybersecurity.
 
-The current implementation represents the author's current understanding of Python networking and security concepts. As new concepts are learned, the project will be continuously improved, refactored, and extended.
+The current implementation is not considered a final or production-ready version. The project is intentionally developed step by step, and its architecture and functionality will change as new concepts are learned and applied.
 
-Future updates may include:
+As the project develops, existing code will be regularly reviewed, refactored, improved, and extended.
 
-* Code refactoring and better project architecture
-* Improved connection management
-* More advanced logging
-* Better statistics and traffic analysis
-* Additional security detection mechanisms
-* Improved error handling
-* Better concurrency management
-* More structured configuration
-* Additional networking and security features
-
-The goal is for this project to evolve together with the author's technical knowledge.
-
-> The more concepts I learn, the more this project will grow, change, and improve.
+> The more I learn, the more this project will evolve.
 
 ---
 
 ## Overview
 
-Network Connection Monitor is an educational TCP monitoring application written in Python.
+Network Connection Monitor is an educational TCP connection monitoring application written in Python.
 
 The project started as a simple TCP server and gradually evolved into a connection monitoring system capable of tracking clients, recording connection information, calculating statistics, detecting repeated connections from the same IP address, and handling multiple clients using threading.
 
 The project is intentionally developed incrementally rather than being designed as a complete system from the beginning.
+
+Each new feature is introduced to apply concepts learned during the development process and to improve the overall understanding of Python networking and security.
 
 ---
 
@@ -59,6 +39,7 @@ The project is intentionally developed incrementally rather than being designed 
 * TCP server and client communication
 * Connection ID generation
 * Client IP and port tracking
+* Server port tracking
 * Connection date and time tracking
 * Connection status tracking
 * Connection duration calculation
@@ -76,19 +57,22 @@ The project is intentionally developed incrementally rather than being designed 
 
 ## Current Architecture
 
-The current version is intentionally kept simple while the project is still evolving.
+The current version intentionally uses a simple structure while the project is still evolving.
 
 ```text
 network-connection-monitor/
 │
 ├── server.py
 ├── client.py
-├── log.txt
 ├── README.md
 └── .gitignore
 ```
 
-As the project grows, the codebase will gradually be refactored into a more modular architecture.
+The architecture will be gradually refactored as the project grows.
+
+For example, connection management, security detection, statistics, and logging may eventually be separated into dedicated modules.
+
+This refactoring will happen incrementally rather than all at once.
 
 ---
 
@@ -127,20 +111,96 @@ Log Written
 
 ---
 
+## Security Monitoring
+
+The current implementation includes a basic detection mechanism for identifying IP addresses that establish an unusually high number of connections.
+
+When an IP exceeds the configured connection threshold, the system generates a security alert.
+
+This feature is intentionally simple and is currently used to practice fundamental concepts such as:
+
+* Connection analysis
+* IP-based detection
+* Threshold-based monitoring
+* Security alerts
+* Network activity observation
+
+The detection logic will become more advanced as the project develops.
+
+---
+
+## Statistics
+
+The current monitoring system provides basic connection statistics, including:
+
+* Total connections
+* Active connections
+* Disconnected connections
+* Unique IP addresses
+* Average connection duration
+* Number of connections per IP
+
+These statistics are currently calculated from the connection records maintained by the server.
+
+---
+
+## Logging
+
+Connection events are written to a local log file during execution.
+
+The log contains information related to connection activity, including:
+
+* Connection ID
+* Client IP
+* Client port
+* Connection date
+* Connection time
+* Exit time
+* Connection status
+* Connection duration
+
+Runtime log files are excluded from version control and are not intended to be committed to the repository.
+
+---
+
+## Multi-Client Support
+
+The server currently supports multiple simultaneous clients using Python's `threading` module.
+
+Each accepted client connection is handled by a separate thread, allowing the server to continue accepting new connections while existing clients remain connected.
+
+This feature was introduced as part of the project's progression from a sequential TCP server toward a more realistic network monitoring architecture.
+
+---
+
 ## Technologies
 
 * Python
 * Socket Programming
 * TCP
+* Client-Server Architecture
 * `socket`
 * `threading`
 * `datetime`
 * `time`
 * File I/O
+* Git
 
 ---
 
 ## Running the Project
+
+Clone the repository:
+
+```bash
+git clone git@github.com:Morez-Momeni/Network-Connection-Monitor.git
+```
+
+Enter the project directory:
+
+```bash
+cd Network-Connection-Monitor
+```
 
 Start the server:
 
@@ -148,7 +208,7 @@ Start the server:
 python server.py
 ```
 
-Then run the client in another terminal:
+Open another terminal and start the client:
 
 ```bash
 python client.py
@@ -158,13 +218,23 @@ Multiple clients can be connected to the server simultaneously.
 
 ---
 
-## Security Detection
+## Example
 
-The current implementation includes a basic detection mechanism for identifying IP addresses that establish an unusually high number of connections.
+A connection may produce information similar to:
 
-This mechanism is intentionally simple and exists primarily to demonstrate fundamental security monitoring concepts.
+```text
+====================
+Connection#1
+====================
+IP:127.0.0.1
+Port:52341
+ServerPort:5000
+Date:22-09-2026
+Time:23:10:42
+====================
+```
 
-It is not intended to replace a production IDS, IPS, firewall, or network monitoring platform.
+The system also maintains connection records that can later be used for history, searching, statistics, and security analysis.
 
 ---
 
@@ -181,20 +251,26 @@ This project is being developed to gain practical experience with:
 * Logging
 * Data structures
 * Connection lifecycle management
+* Network activity analysis
 * Basic security monitoring
-* Network-oriented programming
-* Code refactoring and software architecture
+* Code refactoring
+* Software architecture
 
 ---
 
-## Future Development
+## Development Philosophy
 
-This project will continue to evolve as new concepts are learned.
+This project follows a learning-driven development approach.
 
-The development process is intentionally incremental:
+Instead of trying to design and implement the final architecture from the beginning, the project grows alongside the author's knowledge.
+
+The development cycle is:
 
 ```text
 Learn
+  |
+  v
+Understand
   |
   v
 Implement
@@ -203,7 +279,7 @@ Implement
 Test
   |
   v
-Understand
+Analyze
   |
   v
 Refactor
@@ -211,10 +287,43 @@ Refactor
   v
 Extend
   |
-  +---------> Learn More
+  +------------> Learn More
 ```
 
-The architecture, functionality, and implementation may change significantly over time as the project develops.
+As new concepts are learned, they will be applied to the project where appropriate.
+
+This means that the codebase, architecture, and features are expected to change over time.
+
+---
+
+## Future Development
+
+Planned improvements may include:
+
+* Modular project architecture
+* Improved connection management
+* Better logging architecture
+* Structured log formats
+* Improved error handling
+* More advanced IP analysis
+* Additional security detection mechanisms
+* Better concurrency management
+* Configuration management
+* Improved statistics and reporting
+* More detailed network activity analysis
+* Additional networking and security features
+
+These features will be implemented gradually as the project develops.
+
+---
+
+## Disclaimer
+
+This project is developed for educational purposes.
+
+It is intended to demonstrate fundamental concepts related to Python networking, TCP communication, connection monitoring, logging, concurrency, and basic security detection.
+
+It is not intended to replace production-grade network monitoring systems, IDS/IPS solutions, firewalls, or other professional security infrastructure.
 
 ---
 
@@ -222,17 +331,13 @@ The architecture, functionality, and implementation may change significantly ove
 
 The primary purpose of this project is practical learning.
 
-Rather than building the entire application from the beginning, the project is developed step by step. Each new feature is introduced as a way to apply newly learned concepts in Python, networking, Linux, and cybersecurity.
+Rather than building the entire application at once, the project is developed step by step. Each new feature provides an opportunity to apply newly learned concepts in Python, Linux, networking, and cybersecurity.
 
-This repository therefore represents not only the application itself, but also the progression of the development and learning process behind it.
+The repository therefore represents both the development of a network monitoring application and the progression of the learning process behind it.
+
+---
 
 <p align="center">
-
-  <img
-    src="https://capsule-render.vercel.app/api?type=waving&height=140&section=footer&text=LEARN%20%E2%80%A2%20PRACTICE%20%E2%80%A2%20BREAK%20%E2%80%A2%20FIX&fontSize=22&fontColor=ffffff&fontAlignY=65&color=gradient&customColorList=12,20,30,2"
-    width="100%"
-  />
-
+  <img src="https://capsule-render.vercel.app/api?type=waving&color=0:2c5364,50:203a43,100:0f2027&height=120&section=footer" />
 </p>
-
 
