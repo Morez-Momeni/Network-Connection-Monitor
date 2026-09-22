@@ -1,3 +1,15 @@
+<p align="center">
+  <img
+    src="https://capsule-render.vercel.app/api?type=waving&height=220&section=header&text=GIT%20LEARNING&fontSize=48&fontColor=ffffff&fontAlignY=38&desc=From%20Fundamentals%20to%20Internals&descAlignY=58&descSize=18&color=gradient&customColorList=12,20,30,2"
+    width="100%"
+  />
+
+</p>
+<p align="center">
+  <b>Network Connection Monitor</b>
+</p>
+
+
 # Network Connection Monitor
 
 A Python-based TCP connection monitoring project focused on connection tracking, logging, basic traffic analysis, and security-oriented detection.
@@ -213,4 +225,14 @@ The primary purpose of this project is practical learning.
 Rather than building the entire application from the beginning, the project is developed step by step. Each new feature is introduced as a way to apply newly learned concepts in Python, networking, Linux, and cybersecurity.
 
 This repository therefore represents not only the application itself, but also the progression of the development and learning process behind it.
+
+<p align="center">
+
+  <img
+    src="https://capsule-render.vercel.app/api?type=waving&height=140&section=footer&text=LEARN%20%E2%80%A2%20PRACTICE%20%E2%80%A2%20BREAK%20%E2%80%A2%20FIX&fontSize=22&fontColor=ffffff&fontAlignY=65&color=gradient&customColorList=12,20,30,2"
+    width="100%"
+  />
+
+</p>
+
 
