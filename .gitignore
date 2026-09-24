@@ -1,2 +1,3 @@
 logs/connections.json
+logs/connections_for_dashboard.json
 .venv
