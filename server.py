@@ -1,6 +1,7 @@
 import os
 import socket
 import threading
+import json
 import time
 import datetime
 
@@ -88,11 +89,22 @@ def search(id):
 
 
 def write_in_log_file(log):
-    with open("log.txt",'a',encoding="utf-8") as file :
-        file.write(f"{log}\n ")
+    os.makedirs("logs" , exist_ok=True)
+    log_file = "logs/connections.json"
+    if os.path.exists(log_file):
+        with open(log_file, "r", encoding="utf-8") as file:
+            logs = json.load(file)
+    else:
+        logs =  []
+    logs.append(log)
+    with open(log_file,'w',encoding="utf-8") as file:
+        json.dump(logs,file,indent=4)
 
+def show_log():
+    with open("log.txt",'r') as file :
+        logs = json.load(file)
 
-
+    return logs
 
 def statics():
     
@@ -177,7 +189,7 @@ def handle_client(conn, address, conn_id):
     start_action = datetime.datetime.now().strftime("%H:%M:%S")
 
     log = keep_data_connection(conn_id, start_action, status="Active")
-    write_in_log_file(str(log))
+    write_in_log_file(log)
     show_client_information()
 
     while True:
@@ -203,7 +215,7 @@ def handle_client(conn, address, conn_id):
         "duration": duration
     })
 
-    write_in_log_file(str(connections[conn_id]))
+    write_in_log_file(connections[conn_id])
 
 
 counter = connection_counter()
@@ -242,3 +254,6 @@ while True:
         history()
         print("\nServer Goodbye...")
         break
+
+
+

@@ -1,0 +1,1 @@
+"{'id': 3, 'client_ip': '192.168.1.6', 'client_port': 54990, 'date': '24-09-2026', 'connect_time': '11:49:25', 'exit_time': '11:49:27', 'status': 'Disconnected', 'duration': 1.1884808540344238}"
