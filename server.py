@@ -101,10 +101,15 @@ def write_in_log_file(log):
         json.dump(logs,file,indent=4)
 
 def show_log():
-    with open("log.txt",'r') as file :
-        logs = json.load(file)
+    log_file = "logs/connections.json"
+    if os.path.exists(log_file):
+        with open(log_file,'r',encoding="utf-8") as file :
+            logs = json.load(file)
+    
+        return logs
+    else:
+        return []
 
-    return logs
 
 def statics():
     
