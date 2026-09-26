@@ -18,20 +18,20 @@ def extrect_data():
     result = list(zip(connections_id,connection_duration))
     return result
 
+def plot():
 
-data = extrect_data()
+    data = extrect_data()
 
-plt.figure(figsize=(10, 6))
+    plt.figure(figsize=(10, 6))
 
-for i, j in data:
-    plt.bar(f"Connection {i}", j)
-    plt.text(f"Connection {i}", j, f"{j:.2f}s", ha="center") # type: ignore
+    for i, j in data:
+        plt.bar(f"Connection {i}", j)
+        plt.text(f"Connection {i}", j, f"{j:.2f}s", ha="center") # type: ignore
 
+    plt.xlabel("Connection ID")
+    plt.ylabel("Duration (seconds)")
+    plt.title("Connection Duration")
 
-plt.xlabel("Connection ID")
-plt.ylabel("Duration (seconds)")
-plt.title("Connection Duration")
+    plt.grid(axis="y")
 
-plt.grid(axis="y")
-
-plt.show()
+    plt.show()
